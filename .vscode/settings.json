@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "queue": "cpp",
+        "xmemory": "cpp",
+        "cmath": "cpp"
+    }
+}

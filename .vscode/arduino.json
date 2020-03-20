@@ -1,0 +1,7 @@
+{
+    "board": "esp32:esp32:esp32doit-devkit-v1",
+    "configuration": "FlashFreq=80,UploadSpeed=921600,DebugLevel=debug",
+    "sketch": "beam_cut_freertos.ino",
+    "output": "E:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\.vscode\\build",
+    "port": "COM4"
+}
