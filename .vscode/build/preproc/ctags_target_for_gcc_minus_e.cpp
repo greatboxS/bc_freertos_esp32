@@ -1,23 +1,32 @@
 # 1 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
-// creator: ryan-lenguyen - 18/3/2020
+/* 
 
-#define configMAX_SYSCALL_INTERRUPT_PRIORITY 5
+* creator: ryan-lenguyen 
 
-# 6 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 2
-# 7 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 2
+* date: 18/3/2020
+
+* github: https://github.com/greatboxS/bc_freertos_esp32
+
+* gmail: phuockha0708@gmail.com
+
+*/
+# 8 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
+# 9 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 2
+# 10 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 2
 
 void setup()
 {
-    root_freertos_init();
-
+    // every thing is done in task
+    // easy money!
+    root_sys_init();
 }
 
 void loop()
 {
     // every thing is done in task
     vTaskSuspend(
-# 17 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 3 4
+# 21 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 3 4
                 __null
-# 17 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
+# 21 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
                     );
 }

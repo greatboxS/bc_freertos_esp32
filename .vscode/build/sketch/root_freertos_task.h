@@ -23,6 +23,7 @@
 #include "root_nextion_callback.h"
 ///////////////////////////////////////////////////////////////////////////////////
 int get_queue_size();
+void Task_Main(void *par);
 void Task_GetLastCut(void *par);
 void Task_NextionHandle(void *par);
 void Task_EthernetHandle(void *par);
@@ -134,7 +135,7 @@ static void freertos_task_init()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-int GetQueueCounter()
+int get_queue_size()
 {
     if (QueueHandle != NULL)
         return (MAX_QUEUE_LENGHT - uxQueueSpacesAvailable(QueueHandle));
@@ -176,7 +177,6 @@ void HandleTickTimer(TimerHandle_t xtimer)
 void RequestTimeout_Timer(TimerHandle_t pxTimer)
 {
     xEventGroupClearBits(EventGroupHandle, EVENT_REQUEST_OK);
-    xEventGroupClearBits(EventGroupHandle, EVENT_START_GET_LAST_CUT);
     xTimerStop(pxTimer, (TickType_t)0);
 }
 //------------------------------> Timer3 <----------------------------------------//

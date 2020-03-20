@@ -1,21 +1,25 @@
 #include <Arduino.h>
 #line 1 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
-// creator: ryan-lenguyen - 18/3/2020
-
-#define configMAX_SYSCALL_INTERRUPT_PRIORITY 5
+/* 
+* creator: ryan-lenguyen 
+* date: 18/3/2020
+* github: https://github.com/greatboxS/bc_freertos_esp32
+* gmail: phuockha0708@gmail.com
+*/
 
 #include "global_scope.h"
 #include "root_freertos.h"
 
-#line 8 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
+#line 11 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
 void setup();
-#line 14 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
+#line 18 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
 void loop();
-#line 8 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
+#line 11 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
 void setup()
 {
-    root_freertos_init();
-    
+    // every thing is done in task
+    // easy money!
+    root_sys_init();
 }
 
 void loop()

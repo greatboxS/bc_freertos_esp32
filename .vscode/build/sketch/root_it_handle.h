@@ -183,7 +183,9 @@ void ethernet_handle(EthernetClient &client)
 
                 eeprom_write_machine_info(BKanban.Machine, EEPROM_DEVICE_INFO_ADDR);
 
-                RootNextion.SetPage_stringValue(HIS_PAGE, RootNextion.HisPageHandle.DEVICE_NAME, BKanban.Machine.MachineName);
+                RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.MACHINE_NAME, BKanban.Machine.MachineName);
+                RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.MACHINE_CODE, BKanban.Machine.MachineCode);
+                
                 RootNextion.GotoPage(MACHINE_PAGE);
             }
 

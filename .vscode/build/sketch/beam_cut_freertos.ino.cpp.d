@@ -169,6 +169,7 @@ E:\Visual\ Code\ESP32\BSYS_FreeRTOS\.vscode\build\sketch\beam_cut_freertos.ino.c
  F:\Arduino\libraries\Ethernet\src/Ethernet.h \
  E:\Visual\ Code\ESP32\BSYS_FreeRTOS\.vscode\build\sketch\esp_eeprom_config.h \
  C:\Users\Dell-PC\AppData\Local\Arduino15\packages\esp32\hardware\esp32\1.0.4\libraries\EEPROM\src/EEPROM.h \
+ C:\Users\Dell-PC\AppData\Local\Arduino15\packages\esp32\hardware\esp32\1.0.4/tools/sdk/include/freertos/freertos/FreeRTOSConfig.h \
  C:\Users\Dell-PC\AppData\Local\Arduino15\packages\esp32\hardware\esp32\1.0.4\libraries\BLE\src/FreeRTOS.h \
  C:\Users\Dell-PC\AppData\Local\Arduino15\packages\esp32\hardware\esp32\1.0.4/tools/sdk/include/esp_ringbuf/freertos/ringbuf.h \
  C:\Users\Dell-PC\AppData\Local\Arduino15\packages\esp32\hardware\esp32\1.0.4/tools/sdk/include/freertos/freertos/queue.h \

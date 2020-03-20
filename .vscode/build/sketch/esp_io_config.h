@@ -14,30 +14,31 @@
 
 static void external_interrupt_init(void(callback_func)())
 {
-    printf("Setup external interrupt callback\r\n");
+    printf("Setup external interrupt callback: OK\r\n");
     pinMode(EXTERNAL_INTERRUPT_PIN, INPUT);
     attachInterrupt(EXTERNAL_INTERRUPT_PIN, callback_func, FALLING);
 }
 
 static void io_init()
 {
+     printf("Setup serial port: OK\r\n");
     Serial.begin(115200);
     while (!Serial)
         ;
 
-    printf("Setup external interrupt pin\r\n");
+    printf("Setup external interrupt pin: OK\r\n");
     pinMode(SETTING_PIN, INPUT_PULLUP);
 
-    printf("Setup external interrupt pin\r\n");
+    printf("Setup external interrupt pin: OK\r\n");
     pinMode(EXTERNAL_INTERRUPT_PIN, INPUT);
 
-    printf("Setup alarm io\r\n");
+    printf("Setup alarm io: OK\r\n");
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH);
     pinMode(ALARM_PIN, OUTPUT);
     digitalWrite(ALARM_PIN, HIGH);
 
-    printf("Setup ethernet io\r\n");
+    printf("Setup ethernet io: OK\r\n");
     pinMode(ETHERNET_SS_PIN, OUTPUT);
     pinMode(ETHERNET_RST_PIN, OUTPUT);
     digitalWrite(ETHERNET_SS_PIN, HIGH);

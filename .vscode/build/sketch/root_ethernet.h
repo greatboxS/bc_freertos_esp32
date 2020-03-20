@@ -33,7 +33,7 @@ IPAddress local_ip, gateway_ip, dns_ip, subnet_ip;
 
 EthernetClient client;
 
-static void root_ethernet_init(uint8_t cs_pin, uint8_t rst_pin, void (*callback_func)(EthernetClient &stream))
+static void ethernet_init(uint8_t cs_pin, uint8_t rst_pin, void (*callback_func)(EthernetClient &stream))
 {
     RST_PIN = rst_pin;
     SS_PIN = cs_pin;
