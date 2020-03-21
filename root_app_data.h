@@ -227,7 +227,14 @@ typedef struct SysFlag_t
 		return temp;
 	}
 
-	bool is_adding_user()
+	bool IsCutSubmit()
+	{
+		bool temp = IsSubmit;
+		IsSubmit = false;
+		return temp;
+	}
+
+	bool IsAddingUser()
 	{
 		bool temp = IsAddNewUser;
 		IsAddNewUser = false;

@@ -166,9 +166,9 @@ void ethernet_handle(EthernetClient &client)
                 BKanban.Cutting.Worker.UpdateUser(JsonDoc);
                 Nextion_UpdateUserPage();
 
-                if (Flag.is_adding_user())
+                if (Flag.IsAddingUser())
                 {
-                    RootNextion.showMessage("Add new user success", 2000);
+                    RootNextion.showMessage("Add new user success", 1000);
                 }
                 else
                 {

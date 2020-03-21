@@ -37,7 +37,6 @@ int DetectTick = 0;
 bool Detected = false;
 int previousDetect = 0;
 int oldTick = 0;
-bool OldCutTime_Val = 0;
 
 static void freertos_task_init()
 {
@@ -395,6 +394,7 @@ void Task_EthernetHandle(void *par)
 
 void Task_NextionHandle(void *par)
 {
+    uint32_t OldCutTime_Val = 0;
     for (;;)
     {
         esp_task_wdt_reset();
@@ -478,6 +478,13 @@ void Task_NextionHandle(void *par)
 
             Ethernet_GetTime();
         }
+
+        if(Flag.IsCutSubmit())
+        {
+            Ethernet_SubmitCuttingTime();
+        }
+
+        if(Flag.SequenceSubmit_Tick)
 
         // 1 second trigger
         if (Flag.IsTrigger())

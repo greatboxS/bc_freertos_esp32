@@ -263,14 +263,14 @@ public:
 		sendCommand(command);
 	}
 
-	void showMessage(char *_message, int wait_time = 3000)
+	void showMessage(char *_message, int wait_time = 1000)
 	{
 		SetPage_stringValue(MESSAGE_PAGE, MESSAGE_t, _message);
 		GotoPage(MESSAGE_PAGE);
 		setNumberProperty(PageName[MESSAGE_PAGE], "tm0.tim", wait_time);
 	}
 
-	void showMessage(const char *_message, int wait_time = 3000)
+	void showMessage(const char *_message, int wait_time = 1000)
 	{
 		char message[128]{0};
 		memccpy(message, _message, 0, sizeof(message));
