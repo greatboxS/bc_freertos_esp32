@@ -253,6 +253,12 @@ public:
 
 	void init();
 
+	void PageRefresh()
+	{
+		printf("Refresh page\r\n");
+		Nex->refresh();
+	}
+
 	void GotoPage(uint8_t _page)
 	{
 		Serial.print("Goto page:");

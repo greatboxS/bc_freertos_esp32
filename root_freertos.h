@@ -16,10 +16,12 @@ void root_ethernet_init()
 {
     ethernet_init(ETHERNET_SS_PIN, ETHERNET_RST_PIN, ethernet_handle);
 
-    int ethernet_init_retry = 3;
-    while (ethernet_begin() == 0 || ethernet_init_retry < 0)
+    int ethernet_init_retry = 5;
+    while (ethernet_begin() == 0)
     {
         ethernet_init_retry--;
+        if (ethernet_init_retry < 0)
+            break;
     }
 }
 ///////////////////////////////////////////////////////////
@@ -63,7 +65,7 @@ void root_sys_init()
     ethernet_apply_par_changed();
 
     root_nextion_init();
-    
+
     RootNextion.Waiting(30000, "Initializing...");
 
     root_ethernet_init();

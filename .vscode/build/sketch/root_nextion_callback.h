@@ -173,7 +173,14 @@ void ButSelectSizeClickCallback(uint8_t componentId)
     f_log();
     if (!BKanban.Cutting.IsCutting)
         return;
+
     BKanban.SelectedSize = BKanban.Cutting.SelectCurrentSize(componentId - 40);
+
+    if (BKanban.SelectedSize == nullptr)
+    {
+        RootNextion.showMessage("Size item is empty!");
+        return;
+    }
     RootNextion.SetPage_numberValue(CONFIRM_SIZE_PAGE, RootNextion.ConfirmSizeHandle.CUT_QTY, BKanban.SelectedSize->CuttingQty);
     RootNextion.SetPage_numberValue(CONFIRM_SIZE_PAGE, RootNextion.ConfirmSizeHandle.SIZE_QTY, BKanban.SelectedSize->SizeQty);
     RootNextion.GotoPage(CONFIRM_SIZE_PAGE);
@@ -441,16 +448,11 @@ void Nextion_UpdateUserPage()
 void Nextion_UpdateMachinePage()
 {
     f_log();
-    //RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.MACHINE_NAME, BKanban.Machine.MachineName);
-    //RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.MACHINE_CODE, BKanban.Machine.MachineCode);
-
     char localIp[32]{0};
     snprintf(localIp, sizeof(localIp), "%d.%d.%d.%d", Ethernet.localIP()[0], Ethernet.localIP()[1],
              Ethernet.localIP()[2], Ethernet.localIP()[3]);
 
     RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.LOCAL_IP, localIp);
-    //RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.SERVER_IP, ServerIp);
-    //RootNextion.SetPage_numberValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.SERVER_PORT, ServerPort);
 }
 //------------------------------------------------------------------------------------------------
 #endif

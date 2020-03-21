@@ -8,6 +8,7 @@
 void ethernet_handle(EthernetClient &client);
 // nextion received data callback
 void PAGE_LOADING_EVENT_CALLBACK(uint8_t _pageId, uint8_t _componentId, uint8_t _eventType);
+bool responsed_failed = false;
 
 //---------------------------------------------------------------------------------------------------
 void ethernet_handle(EthernetClient &client)
@@ -16,7 +17,7 @@ void ethernet_handle(EthernetClient &client)
     memset(httpHeader.buf, 0, sizeof(httpHeader.buf));
     client.readBytesUntil('\r\n', httpHeader.buf, receivedBytes);
 
-    bool responsed_failed = false;
+    responsed_failed = false;
 
     xEventGroupClearBits(EventGroupHandle, EVENT_REQUEST_OK);
 
@@ -28,8 +29,6 @@ void ethernet_handle(EthernetClient &client)
 
         if (CurrentRequest != nullptr)
             CurrentRequest->request_ok = true;
-            
-        RootNextion.GotoPage(BKanban.CurrentWindowId);
     }
 
     if (strstr(httpHeader.buf, "Access denied") != nullptr)
@@ -145,6 +144,7 @@ void ethernet_handle(EthernetClient &client)
             {
                 BKanban.EthernetRespType = RESP_GET_SCHEDULE;
                 BKanban.Cutting.Json_UpdateScheduleList(JsonDoc);
+                RootNextion.GotoPage(SEARCH_PAGE);
             }
 
             if (eop == "BEAM_GET_PO_INFO")
@@ -229,6 +229,9 @@ void ethernet_handle(EthernetClient &client)
                 BKanban.Json_UpdateStartCutting(JsonDoc);
                 eeprom_write_binterface_id(BKanban.BInterface.BinterfaceId, EEPROM_CUT_ADDR);
                 Output_Alarm(2);
+
+                xEventGroupSetBits(EventGroupHandle, EVENT_CONTINUE_OK);
+
                 BKanban.Cutting.Continue = false;
             }
 
@@ -239,6 +242,7 @@ void ethernet_handle(EthernetClient &client)
                 Output_Alarm();
                 if (BKanban.StopCutting)
                     Ethernet_StopCutting();
+                RootNextion.GotoPage(CUTTING_PAGE);
             }
 
             if (eop == "BEAM_STOP_CUTTING")
@@ -269,6 +273,9 @@ void ethernet_handle(EthernetClient &client)
                     ButContinueClickCallback();
 
                 RootNextion.GotoPage(BKanban.CurrentWindowId);
+
+                Ethernet_SubmitCuttingTime();
+                Ethernet_GetTime();
             }
 
             if (eop == "CUT_TIME_RECORD")
