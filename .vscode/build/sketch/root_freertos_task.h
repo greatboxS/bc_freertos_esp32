@@ -348,8 +348,6 @@ void Task_EthernetHandle(void *par)
 
         int queue_space = get_queue_size();
 
-        printf("Queue counter %d\r\n", queue_space);
-
         if (queue_space > 0)
         {
             bool remake = false;
@@ -369,7 +367,6 @@ void Task_EthernetHandle(void *par)
 
         if (CurrentRequest != NULL)
         {
-            printf("%s\r\n", CurrentRequest->request_url);
             if (CurrentRequest->retry >= 5)
             {
                 CurrentRequest->Cancel = true;
