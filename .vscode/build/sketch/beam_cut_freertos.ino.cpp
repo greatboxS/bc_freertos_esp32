@@ -24,6 +24,7 @@ void setup()
 
 void loop()
 {
+    esp_task_wdt_reset();
     // every thing is done in task
     vTaskSuspend(NULL);
 }

@@ -32,15 +32,17 @@ void Task_RFIDHandle(void *par);
 void HandleTickTimer(TimerHandle_t xtimer);
 void SensorCheckingTimer(TimerHandle_t pxTimer);
 void RequestTimeout_Timer(TimerHandle_t pxTimer);
+
 int DetectTick = 0;
 bool Detected = false;
 int previousDetect = 0;
 int oldTick = 0;
+bool OldCutTime_Val = 0;
 
 static void freertos_task_init()
 {
 #pragma region Initializes Queue
-    QueueHandle = xQueueCreate(MAX_QUEUE_LENGHT, sizeof(Ethernet_Request_t *));
+    QueueHandle = xQueueCreate(MAX_QUEUE_LENGHT, sizeof(Ethernet_Request_t));
 
     if (QueueHandle != NULL)
         printf("Create QueueHandle success\r\n");
@@ -103,33 +105,32 @@ static void freertos_task_init()
 
 #pragma region Initializes Task
 
-    if (xTaskCreate(Task_Main, "MainTask", 1024 * 30, NULL, 1, &MainTask) == pdPASS)
+    esp_task_wdt_init(8, pdFALSE);
+
+    if (xTaskCreatePinnedToCore(Task_Main, "MainTask", 1024 * 20, NULL, 0, &MainTask, 0) == pdPASS)
         printf("Task_Main created successully\r\n");
     else
         printf("Task_Main created error\r\n");
 
-    if (xTaskCreate(Task_GetLastCut, "Task1", 1024 * 30, NULL, 1, &Task1) == pdPASS)
+    if (xTaskCreatePinnedToCore(Task_GetLastCut, "Task1", 1024 * 20, NULL, 0, &Task1, 1) == pdPASS)
         printf("Task_GetLastCut created successully\r\n");
     else
         printf("Task_GetLastCut created error\r\n");
 
-    if (xTaskCreate(Task_EthernetHandle, "Task2", 1024 * 100, NULL, 1, &Task2) == pdPASS)
+    if (xTaskCreatePinnedToCore(Task_EthernetHandle, "Task2", 1024 * 50, NULL, 0, &Task2, 1) == pdPASS)
         printf("Task_EthernetHandle created successully\r\n");
     else
         printf("Task_EthernetHandle created error\r\n");
 
-    if (xTaskCreate(Task_NextionHandle, "Task3", 1024 * 50, NULL, 1, &Task3) == pdPASS)
+    if (xTaskCreatePinnedToCore(Task_NextionHandle, "Task3", 1024 * 50, NULL, 0, &Task3, 1) == pdPASS)
         printf("Task_NextionHandle created successully\r\n");
     else
         printf("Task_NextionHandle created error\r\n");
 
-    if (xTaskCreate(Task_RFIDHandle, "Task4", 1024 * 30, NULL, 1, &Task4) == pdPASS)
+    if (xTaskCreatePinnedToCore(Task_RFIDHandle, "Task4", 1024 * 30, NULL, 0, &Task4, 1) == pdPASS)
         printf("Task_RFIDHandle created successully\r\n");
     else
         printf("Task_RFIDHandle created error\r\n");
-
-    vTaskSuspendAll();
-    vTaskResume(MainTask);
 
 #pragma endregion
 }
@@ -149,29 +150,9 @@ void HandleTickTimer(TimerHandle_t xtimer)
 
     Flag.SubmitTick_Handle();
 
-    Flag.LastCutTick_Handle();
-
-    Flag.RequestTick_Handle();
-
     BKanban.Time.Tick_Handle();
 
-    if (BKanban.Cutting.IsCutting)
-    {
-        BKanban.Cutting.sec++;
-        if (BKanban.Cutting.sec >= 60)
-        {
-            BKanban.Cutting.sec = 0;
-            BKanban.Cutting.RunTime++;
-        }
-    }
-
-    EventBits_t request_event = xEventGroupGetBits(EventGroupHandle) & EVENT_REQUEST_OK;
-    EventBits_t last_cut_event = xEventGroupGetBits(EventGroupHandle) & EVENT_GET_LAST_CUT_OK;
-
-    if (BKanban.Time.Year() == 0 && request_event == 0 && last_cut_event != 0)
-    {
-        Ethernet_GetTime();
-    }
+    BKanban.Cutting.CuttingTime_TickHandle();
 }
 //------------------------------> Timer3 <----------------------------------------//
 void RequestTimeout_Timer(TimerHandle_t pxTimer)
@@ -204,6 +185,12 @@ void SensorCheckingTimer(TimerHandle_t pxTimer)
                 if (millis() - previousDetect > 2000)
                 {
                     printf("New cut detected\r\n");
+
+                    if (BKanban.Cutting.IsCutting)
+                    {
+                        BKanban.Cutting.CurrentCutTimes++;
+                    }
+
                     BKanban.Cutting.TotalCutTimes++;
                     BKanban.Cutting.SubmitCutTime++;
                     DetectTick = 0;
@@ -218,28 +205,22 @@ void SensorCheckingTimer(TimerHandle_t pxTimer)
 
 void Task_Main(void *par)
 {
-    printf("Start Task1\r\n");
-    vTaskResume(Task1);
-    printf("Begin Main Task\r\n");
     for (;;)
     {
+        esp_task_wdt_reset();
         int queueSize = get_queue_size();
 
         EventBits_t event_bit = xEventGroupWaitBits(EventGroupHandle,
-                                                    EVENT_TASK1_OK | EVENT_TASK1_OK | EVENT_TASK3_OK | EVENT_TASK4_OK | EVENT_GET_LAST_CUT_OK,
+                                                    EVENT_TASK1_OK | EVENT_TASK1_OK | EVENT_TASK3_OK | EVENT_TASK4_OK,
                                                     pdTRUE, pdFALSE, (TickType_t)10);
+        EventBits_t last_cut_event = xEventGroupGetBits(EventGroupHandle) & EVENT_GET_LAST_CUT_OK;
 
         if ((event_bit & EVENT_TASK1_OK) != 0)
         {
-            printf("Task1 OK ->Resume Task2");
-            // Task 1 get last cut ok
-
-            if ((event_bit & EVENT_GET_LAST_CUT_OK) != 0)
-            {
-                printf("Task1 done, delete this task\r\n");
-                vTaskDelete(Task1);
-            }
-
+            xEventGroupClearBits(EventGroupHandle, EVENT_TASK1_OK);
+#if SYS_TASK_LOG
+            printf("Task1 OK ->Resume Task2\r\n");
+#endif
             // Check if the cutting not yet finish
             if (BKanban.Cutting.Continue && !BKanban.Cutting.IsCutting && queueSize <= 0)
             {
@@ -264,36 +245,51 @@ void Task_Main(void *par)
 
         if ((event_bit & EVENT_TASK2_OK) != 0)
         {
+            xEventGroupClearBits(EventGroupHandle, EVENT_TASK2_OK);
             // Task 2 get last cut ok
+#if SYS_TASK_LOG
             printf("Task2 OK -> Resume Task3\r\n");
-            vTaskSuspend(Task2);
+#endif
             vTaskResume(Task3);
         }
 
         if ((event_bit & EVENT_TASK3_OK) != 0)
         {
+            xEventGroupClearBits(EventGroupHandle, EVENT_TASK3_OK);
             // Task 3 get last cut ok
+#if SYS_TASK_LOG
             printf("Task3 OK -> Resume Task4\r\n");
-            vTaskSuspend(Task3);
+#endif
             vTaskResume(Task4);
         }
 
         if ((event_bit & EVENT_TASK4_OK) != 0)
         {
+            xEventGroupClearBits(EventGroupHandle, EVENT_TASK4_OK);
             // Task 4 get last cut ok
-            vTaskSuspend(Task4);
-
-            if ((event_bit & EVENT_GET_LAST_CUT_OK) != 0)
+            if ((last_cut_event & EVENT_GET_LAST_CUT_OK) != 0)
             {
+#if SYS_TASK_LOG
                 printf("Task4 OK -> Resume Task2 \r\n");
+#endif
                 vTaskResume(Task2);
+
+                if (BKanban.Time.Year() == 0)
+                {
+                    Ethernet_SubmitCuttingTime();
+                    Ethernet_GetTime();
+                }
             }
             else
             {
+#if SYS_TASK_LOG
                 printf("Task4 OK -> Resume Task1 \r\n");
+#endif
                 vTaskResume(Task1);
             }
         }
+
+        vTaskDelay(2);
     }
 }
 
@@ -301,9 +297,11 @@ void Task_GetLastCut(void *par)
 {
     for (;;)
     {
+        esp_task_wdt_reset();
         int queueSize = get_queue_size();
 
-        EventBits_t get_last_cut_event = xEventGroupGetBits(EventGroupHandle) & EVENT_GET_LAST_CUT_OK;
+        EventBits_t get_last_cut_event = xEventGroupWaitBits(EventGroupHandle, EVENT_GET_LAST_CUT_OK, pdFALSE, pdFALSE, (TickType_t)10);
+        get_last_cut_event &= EVENT_GET_LAST_CUT_OK;
 
         if (get_last_cut_event == 0 && queueSize <= 0)
         {
@@ -323,10 +321,21 @@ void Task_GetLastCut(void *par)
             }
         }
 
-        printf("Set bit to notify that Task1 have done\r\n");
+#if SYS_TASK_LOG
+        printf("--->> Task1 have done\r\n");
+#endif
         xEventGroupSetBits(EventGroupHandle, EVENT_TASK1_OK);
 
         vTaskDelay(2);
+
+        // Task 1 get last cut ok
+        if ((get_last_cut_event & EVENT_GET_LAST_CUT_OK) != 0)
+        {
+            printf("Task1 done, delete this task\r\n");
+            vTaskDelete(Task1);
+        }
+
+        vTaskSuspend(Task1);
     }
 }
 
@@ -334,6 +343,7 @@ void Task_EthernetHandle(void *par)
 {
     for (;;)
     {
+        esp_task_wdt_reset();
         ethernet_listen();
 
         int queue_space = get_queue_size();
@@ -352,7 +362,8 @@ void Task_EthernetHandle(void *par)
             if (remake)
             {
                 printf("Queue receive\r\n");
-                xQueueReceive(QueueHandle, &(CurrentRequest), (TickType_t)0);
+                xQueueReceive(QueueHandle, &QueueReceive, (TickType_t)0);
+                CurrentRequest = &QueueReceive;
             }
         }
 
@@ -374,32 +385,23 @@ void Task_EthernetHandle(void *par)
                 }
             }
         }
-        printf("Set bit to notify that Task2 have done\r\n");
+
+#if SYS_TASK_LOG
+        printf("--->> Task2 have done\r\n");
+#endif
         xEventGroupSetBits(EventGroupHandle, EVENT_TASK2_OK);
 
         vTaskDelay(2);
+        vTaskSuspend(Task2);
     }
 }
 
 void Task_NextionHandle(void *par)
 {
-    bool OldCutTime_Val = 0;
     for (;;)
     {
-        if (mfrc522_read_new_tag())
-        {
-            Output_Alarm();
+        esp_task_wdt_reset();
 
-            if (BKanban.CurrentPageId == NEW_USER_PAGE)
-            {
-                RootNextion.SetPage_stringValue(NEW_USER_PAGE, RootNextion.NewUserHandle.NEW_USER_RFID, (char *)TagNumber);
-            }
-            else
-            {
-                memccpy(BKanban.Cutting.Worker.UserRFID, TagNumber, 0, sizeof(BKanban.Cutting.Worker.UserRFID));
-                Ethernet_GetWorkerInfo();
-            }
-        }
         RootNextion.Listening();
 
         // New page event
@@ -449,12 +451,11 @@ void Task_NextionHandle(void *par)
             }
         }
 
-        if (OldCutTime_Val != BKanban.Cutting.TotalCutTimes && !updateState)
+        if (OldCutTime_Val != BKanban.Cutting.TotalCutTimes)
         {
             RootNextion.SetPage_numberValue(CUTTING_PAGE, RootNextion.CuttingPageHandle.TOTAL_TIME, BKanban.Cutting.TotalCutTimes);
             if (BKanban.Cutting.IsCutting)
             {
-                BKanban.Cutting.CurrentCutTimes++;
                 RootNextion.SetPage_numberValue(CUTTING_PAGE, RootNextion.CuttingPageHandle.CUTTING_TIME, BKanban.Cutting.CurrentCutTimes);
             }
             OldCutTime_Val = BKanban.Cutting.TotalCutTimes;
@@ -477,6 +478,8 @@ void Task_NextionHandle(void *par)
                 ethernet_reset();
                 ethernet_begin();
             }
+
+            Ethernet_GetTime();
         }
 
         // 1 second trigger
@@ -486,27 +489,17 @@ void Task_NextionHandle(void *par)
 
             RootNextion.setLanStatus(BKanban.CurrentWindowId, BKanban.EthernetState == 1 ? true : false);
 
-            if (BKanban.Cutting.IsCutting)
-            {
-                char temp[32]{0};
-                snprintf(temp, sizeof(temp), "%d:%d", BKanban.Cutting.RunTime, BKanban.Cutting.sec);
-                RootNextion.SetPage_stringValue(CUTTING_PAGE, RootNextion.CuttingPageHandle.TIME, temp);
-            }
-
-            if (BKanban.Cutting.IsCutting && !Flag.IsRequest)
-            {
-                if (BKanban.CurrentWindowId != CUTTING_PAGE && BKanban.CurrentWindowId != CONFIRM_SIZE_PAGE)
-                    RootNextion.GotoPage(CUTTING_PAGE);
-            }
-
             Nextion_UpdateTime();
+
             printf("Free heap size: %d\r\n", esp_get_free_heap_size());
         }
-
-        printf("Set bit to notify that Task3 have done\r\n");
+#if SYS_TASK_LOG
+        printf("--->> Task3 have done\r\n");
+#endif
         xEventGroupSetBits(EventGroupHandle, EVENT_TASK3_OK);
 
         vTaskDelay(2);
+        vTaskSuspend(Task3);
     }
 }
 
@@ -514,8 +507,8 @@ void Task_RFIDHandle(void *par)
 {
     for (;;)
     {
-        printf("Task_RFIDHandle take the semaphore\r\n");
-        if (mfrc522_read_new_tag())
+        esp_task_wdt_feed();
+        if (mfrc522_read_new_tag() && !BKanban.Cutting.IsCutting)
         {
             Output_Alarm();
 
@@ -529,11 +522,13 @@ void Task_RFIDHandle(void *par)
                 Ethernet_GetWorkerInfo();
             }
         }
-
-        printf("Set bit to notify that Task4 have done\r\n");
+#if SYS_TASK_LOG
+        printf("--->> Task4 have done\r\n");
+#endif
         xEventGroupSetBits(EventGroupHandle, EVENT_TASK4_OK);
 
         vTaskDelay(2);
+        vTaskSuspend(Task4);
     }
 }
 

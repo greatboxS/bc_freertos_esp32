@@ -30,6 +30,12 @@
 #include "freertos/event_groups.h"
 #include "freertos/queue.h"
 #include "freertos/task.h"
+#include "esp_int_wdt.h"
+#include "esp_task_wdt.h"
+
+#ifndef SYS_TASK_LOG
+#define SYS_TASK_LOG false
+#endif
 
 static RootNextionClass RootNextion = RootNextionClass(NEXTION_SERIAL_NUM, NEXTION_BAUD, NEXTION_TIMEOUT);
 static HttpHeader_t httpHeader;
@@ -38,6 +44,7 @@ static SysFlag_t Flag;
 static Ethernet_Request_t xRequest;
 static Ethernet_Request_t *CurrentRequest = NULL;
 static Schedule_t SelectedSchedule;
+static Ethernet_Request_t QueueReceive;
 
 static EventGroupHandle_t EventGroupHandle;
 static QueueHandle_t QueueHandle;

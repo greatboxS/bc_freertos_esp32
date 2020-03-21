@@ -23,10 +23,11 @@ void setup()
 
 void loop()
 {
+    esp_task_wdt_reset();
     // every thing is done in task
     vTaskSuspend(
-# 21 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 3 4
+# 22 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino" 3 4
                 __null
-# 21 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
+# 22 "e:\\Visual Code\\ESP32\\BSYS_FreeRTOS\\beam_cut_freertos.ino"
                     );
 }

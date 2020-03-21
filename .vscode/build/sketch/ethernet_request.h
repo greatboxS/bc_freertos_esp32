@@ -334,9 +334,11 @@ void Ethernet_SubmitNewUser()
 void SendRequest(char *url, bool showWaitingPage, uint8_t method, char *data)
 {
     f_log();
-    xRequest.Update(url, showWaitingPage, method, data);
-    Ethernet_Request_t *pxRequest = &xRequest;
-    xQueueSend(QueueHandle, (void *)&pxRequest, (TickType_t)10);
+    Ethernet_Request_t request;
+    request.Update(url, showWaitingPage, method, data);
+    Ethernet_Request_t *pxRequest = &request;
+    
+    xQueueSend(QueueHandle, (void *)&request, (TickType_t)100);
 }
 
 void ethernet_send_request(Ethernet_Request_t *current)
@@ -379,6 +381,8 @@ void ethernet_send_request(Ethernet_Request_t *current)
     printf("RootEthernet.client.getTimeout() = %d\r\n", client.getTimeout());
 
     ethernet_make_request(current->request_url, current->request_method, current->request_data);
+    if (current->ShowWaitingPage)
+        RootNextion.Waiting(5000, "Request to server...");
 
     printf("Set event bit and reset timeout timer\r\n");
     xEventGroupSetBits(EventGroupHandle, EVENT_REQUEST_OK);

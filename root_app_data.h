@@ -58,7 +58,7 @@ typedef enum RespExpType_t
 typedef struct
 {
 	char code[32]; //code
-	int dataLength;
+	uint32_t dataLength;
 	char buf[1024 * 3];
 } HttpHeader_t;
 
@@ -66,7 +66,7 @@ typedef struct User_t
 {
 	long id;
 	bool Pass;
-	int UserCode;
+	uint32_t UserCode;
 	char Division[5];
 	char UserName[50];
 	char UserRFID[10];
@@ -193,7 +193,6 @@ typedef struct
 
 typedef struct SysFlag_t
 {
-	bool IsRequest;
 	bool TagFlag;
 	bool IsCutting;
 	bool IsConfirmSize;
@@ -206,20 +205,6 @@ typedef struct SysFlag_t
 
 	int RequestTimeout_Tick = 0;
 	bool IsReqeustTimeout = false;
-	void RequestTick_Handle()
-	{
-		RequestTimeout_Tick++;
-		if (IsRequest)
-		{
-			if (RequestTimeout_Tick >= 3)
-			{
-				IsRequest = false;
-				IsReqeustTimeout = true;
-			}
-		}
-		else
-			RequestTimeout_Tick = 0;
-	}
 
 	int SequenceSubmit_Tick = 0;
 	bool IsSubmit = false;
@@ -235,27 +220,6 @@ typedef struct SysFlag_t
 		}
 	}
 
-	int GetLastCut_Tick = 0;
-	bool IsGetLastCut_Timeout = false;
-	bool IsGetLastCut_Ok = false;
-	bool IsRequestingLastCut = false;
-	void LastCutTick_Handle()
-	{
-		GetLastCut_Tick++;
-		if (IsRequestingLastCut)
-		{
-			if (GetLastCut_Tick >= 5)
-			{
-				GetLastCut_Tick = 0;
-				IsGetLastCut_Timeout = true;
-				IsGetLastCut_Ok = false;
-				IsRequestingLastCut = false;
-			}
-		}
-		else
-			GetLastCut_Tick = 0;
-	}
-
 	bool IsTrigger()
 	{
 		bool temp = Trigger;
@@ -263,20 +227,6 @@ typedef struct SysFlag_t
 		return temp;
 	}
 
-	void is_getting_last_cut(bool ok)
-	{
-		IsRequestingLastCut = false;
-		if (ok)
-		{
-			IsGetLastCut_Ok = true;
-			IsGetLastCut_Timeout = false;
-		}
-		else
-		{
-			IsGetLastCut_Ok = false;
-			IsGetLastCut_Timeout = true;
-		}
-	}
 	bool is_adding_user()
 	{
 		bool temp = IsAddNewUser;
@@ -413,29 +363,42 @@ typedef struct BInterface_t
 
 typedef struct Cutting_t
 {
-	int TotalSelectedQty = 0;
-	int TotalCuttingQty = 0;
-	int TotalCutTimes = 0;
-	int CurrentCutTimes = 0;
-	int SubmitCutTime = 0;
-	int OldSubmitCutTime = 0;
-	int RunTime = 0;
+	uint32_t TotalSelectedQty = 0;
+	uint32_t TotalCuttingQty = 0;
+	uint32_t TotalCutTimes = 0;
+	uint32_t CurrentCutTimes = 0;
+	uint32_t SubmitCutTime = 0;
+	uint32_t OldSubmitCutTime = 0;
+	uint32_t RunTime = 0;
 	uint8_t sec = 0;
 
-	int RespTotalCutQty;
-	int REspTotalCutTime;
+	uint32_t RespTotalCutQty;
+	uint32_t REspTotalCutTime;
 
 	bool Continue = false;
 	bool IsCutting = false;
 	bool StartCuttingSuccess = false;
 	bool StopCuttingSuccess = false;
 
-	int StartScheduleId = 0;
+	uint32_t StartScheduleId = 0;
 	std::vector<Schedule_t> ScheduleList;
 	std::vector<Size_t> SizeList;
 	std::vector<Part_t> ComponentList;
 	ScheduleInfo_t ScheduleInfo;
 	User_t Worker;
+
+	void CuttingTime_TickHandle()
+	{
+		if (IsCutting)
+		{
+			sec++;
+			if (sec >= 60)
+			{
+				sec = 0;
+				RunTime++;
+			}
+		}
+	}
 
 	Schedule_t *SelectCurrentSchedule(uint8_t index)
 	{
@@ -684,17 +647,12 @@ typedef struct BKanban_t
 		JsonParse_Element(JsonDoc, "Hour", Time.arr[3]);
 		JsonParse_Element(JsonDoc, "Min", Time.arr[4]);
 		JsonParse_Element(JsonDoc, "Sec", Time.arr[5]);
-		//lcal::SaveTime(Time.arr, false);
 	}
 
 	void Json_UpdateSubmitCutTime(JsonDocument JsonDoc)
 	{
 		f_log();
 		JsonParse_Element(JsonDoc, "TotalCutTime", Cutting.TotalCutTimes);
-		if (Cutting.SubmitCutTime >= Cutting.OldSubmitCutTime)
-			Cutting.SubmitCutTime -= Cutting.OldSubmitCutTime;
-		else
-			Cutting.OldSubmitCutTime = 0;
 	}
 };
 
@@ -712,7 +670,7 @@ typedef struct Ethernet_Request_t
 
 		ShowWaitingPage = show;
 		request_method = method;
-		retry=0;
+		retry = 0;
 		request_ok = false;
 		Cancel = false;
 	}
@@ -721,7 +679,7 @@ typedef struct Ethernet_Request_t
 	char request_data[256]{0};
 	uint8_t retry = 0;
 	uint8_t request_method;
-	bool request_ok=false;
+	bool request_ok = false;
 	bool Cancel = false;
 	bool ShowWaitingPage = false;
 };

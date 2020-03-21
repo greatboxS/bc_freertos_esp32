@@ -51,7 +51,6 @@ void Nextion_UpdateUserPage();
 void Nextion_UpdateMachinePage();
 
 const char *txtTime[] = {"r3.val", "r4.val", "r5.val", "r0.val", "r1.val", "r2.val"};
-bool updateState = false;
 //printh 65 00 C8 00 FF FF FF
 
 //-------------------------------His page [page 0] callback functions ----------------------------
@@ -132,7 +131,7 @@ void ButInfoGoNextClickCallback()
 void ButInfoGoBackClickCallback()
 {
     f_log();
-    if(BKanban.Cutting.IsCutting)
+    if (BKanban.Cutting.IsCutting)
     {
         RootNextion.showMessage("Finish cutting first!");
         return;
@@ -300,8 +299,6 @@ void ButModifyClickCallback()
 void WaitingTimeOutCallback()
 {
     f_log();
-    Flag.IsRequest = false;
-
     if (BKanban.CurrentPageId == COMPONENT_PAGE)
         RootNextion.GotoPage(INFO_PAGE);
     else
@@ -316,6 +313,16 @@ void Nextion_UpdateTime()
         snprintf(temp, sizeof(temp), "%s.%s", RootNextion.PageName[BKanban.CurrentPageId], txtTime[i]);
         RootNextion.setNumberProperty(temp, BKanban.Time.arr[i]);
     }
+
+    if (BKanban.Cutting.IsCutting)
+    {
+        char temp[32]{0};
+        snprintf(temp, sizeof(temp), "%d:%d", BKanban.Cutting.RunTime, BKanban.Cutting.sec);
+        RootNextion.SetPage_stringValue(CUTTING_PAGE, RootNextion.CuttingPageHandle.TIME, temp);
+
+        if (BKanban.CurrentWindowId != CUTTING_PAGE && BKanban.CurrentWindowId != CONFIRM_SIZE_PAGE)
+            RootNextion.GotoPage(CUTTING_PAGE);
+    }
 }
 
 //-----------------------------------------------------------------------------------
@@ -326,7 +333,6 @@ void Nextion_UpdateFooter()
 void Nextion_UpdateHisPage()
 {
     f_log();
-    updateState = true;
     RootNextion.SetPage_stringValue(HIS_PAGE, RootNextion.HisPageHandle.PO_NUMBER, BKanban.BInterface.PoNumber.c_str());
     RootNextion.SetPage_stringValue(HIS_PAGE, RootNextion.HisPageHandle.COMPONENT, BKanban.BInterface.Component.c_str());
     RootNextion.SetPage_stringValue(HIS_PAGE, RootNextion.HisPageHandle.START_TIME, BKanban.BInterface.StartTime.c_str());
@@ -337,13 +343,11 @@ void Nextion_UpdateHisPage()
     RootNextion.setPage_stringAsNumberProperty(HIS_PAGE, RootNextion.HisPageHandle.CUTTING_TIME, BKanban.BInterface.CutTime);
     RootNextion.setPage_stringAsNumberProperty(HIS_PAGE, RootNextion.HisPageHandle.START_SEQ, BKanban.BInterface.StartSeq);
     RootNextion.setPage_stringAsNumberProperty(HIS_PAGE, RootNextion.HisPageHandle.STOP_SEQ, BKanban.BInterface.StopSeq);
-    updateState = false;
 }
 
 void Nextion_UpdateSearchPage()
 {
     f_log();
-    updateState = true;
     for (uint8_t i = 0; i < BKanban.Cutting.ScheduleList.size(); i++)
     {
         RootNextion.SetPage_stringValue(SEARCH_PAGE, RootNextion.NexPo(i), BKanban.Cutting.ScheduleList.at(i).PoNumber);
@@ -354,12 +358,10 @@ void Nextion_UpdateSearchPage()
         else
             RootNextion.SetPage_propertyForceColor(SEARCH_PAGE, RootNextion.NexPo(i), 0);
     }
-    updateState = false;
 }
 void Nextion_UpdateInfoPage()
 {
     f_log();
-    updateState = true;
     RootNextion.SetPage_stringValue(INFO_PAGE, RootNextion.InfoPageHandle.PO_NUMBER, BKanban.Cutting.ScheduleInfo.PoNumber);
     RootNextion.SetPage_stringValue(INFO_PAGE, RootNextion.InfoPageHandle.MODEL_NUMBER, BKanban.Cutting.ScheduleInfo.Model);
     RootNextion.SetPage_stringValue(INFO_PAGE, RootNextion.InfoPageHandle.MODEL_NAME, BKanban.Cutting.ScheduleInfo.ModelName);
@@ -381,12 +383,10 @@ void Nextion_UpdateInfoPage()
         else
             RootNextion.SetPage_propertyForceColor(INFO_PAGE, RootNextion.NexText(seqIndex), 31);
     }
-    updateState = false;
 }
 void Nextion_UpdateCuttingPage()
 {
     f_log();
-    updateState = true;
     RootNextion.SetPage_stringValue(CUTTING_PAGE, RootNextion.CuttingPageHandle.PO_NUMBER, BKanban.Cutting.ScheduleInfo.PoNumber);
     RootNextion.setPage_stringAsNumberProperty(CUTTING_PAGE, RootNextion.CuttingPageHandle.TOTAL_SEQ, BKanban.Cutting.ScheduleInfo.SeqList.size());
     RootNextion.SetPage_numberValue(CUTTING_PAGE, RootNextion.CuttingPageHandle.SEQ_QTY, BKanban.Cutting.TotalSelectedQty);
@@ -419,19 +419,15 @@ void Nextion_UpdateCuttingPage()
             RootNextion.SetPage_propertyForceColor(CUTTING_PAGE, RootNextion.NexText(sizeid), 1152);
         }
     }
-
-    updateState = false;
 }
 void Nextion_UpdateComponentPage()
 {
     f_log();
-    updateState = true;
     for (uint8_t i = 0; i < BKanban.Cutting.ComponentList.size(); i++)
     {
         printf("Name: %s\r\n", BKanban.Cutting.ComponentList.at(i).Name);
         RootNextion.SetPage_stringValue(COMPONENT_PAGE, RootNextion.NexText(i), BKanban.Cutting.ComponentList.at(i).Name);
     }
-    updateState = false;
 }
 void Nextion_UpdateUserPage()
 {

@@ -16,18 +16,19 @@ void ethernet_handle(EthernetClient &client)
     memset(httpHeader.buf, 0, sizeof(httpHeader.buf));
     client.readBytesUntil('\r\n', httpHeader.buf, receivedBytes);
 
-    printf("%s\r\n", httpHeader.buf);
-
-    Flag.IsRequest = false;
     bool responsed_failed = false;
 
     xEventGroupClearBits(EventGroupHandle, EVENT_REQUEST_OK);
 
     if (strstr(httpHeader.buf, "200 OK") != nullptr)
     {
+        printf("Http header: %s\r\n", httpHeader.buf);
+
         responsed_failed = false;
+
         if (CurrentRequest != nullptr)
             CurrentRequest->request_ok = true;
+            
         RootNextion.GotoPage(BKanban.CurrentWindowId);
     }
 
@@ -87,6 +88,19 @@ void ethernet_handle(EthernetClient &client)
         return;
     }
 
+    if (strstr(httpHeader.buf, "CUT_TIME_RECORD") != nullptr)
+    {
+        if (BKanban.Cutting.SubmitCutTime >= BKanban.Cutting.OldSubmitCutTime)
+            BKanban.Cutting.SubmitCutTime -= BKanban.Cutting.OldSubmitCutTime;
+        else
+        {
+            BKanban.Cutting.SubmitCutTime = 0;
+            BKanban.Cutting.OldSubmitCutTime = 0;
+        }
+
+        BKanban.EthernetRespType = CUT_TIME_RECORD;
+    }
+
     if (strstr(httpHeader.buf, "{") != nullptr)
     {
         // Get the responsed data from server
@@ -112,7 +126,6 @@ void ethernet_handle(EthernetClient &client)
                     Message.toLowerCase();
                     if (Message.indexOf("can not find binterface") > -1)
                     {
-                        Flag.is_getting_last_cut(true);
                         xEventGroupSetBits(EventGroupHandle, EVENT_GET_LAST_CUT_OK);
                     }
                     RootNextion.showMessage(Message.c_str());
@@ -185,7 +198,7 @@ void ethernet_handle(EthernetClient &client)
 
                 RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.MACHINE_NAME, BKanban.Machine.MachineName);
                 RootNextion.SetPage_stringValue(MACHINE_PAGE, RootNextion.SettingMachinePageHandle.MACHINE_CODE, BKanban.Machine.MachineCode);
-                
+
                 RootNextion.GotoPage(MACHINE_PAGE);
             }
 
@@ -240,7 +253,6 @@ void ethernet_handle(EthernetClient &client)
             if (eop == "BEAM_GET_LAST_CUT")
             {
                 xEventGroupSetBits(EventGroupHandle, EVENT_GET_LAST_CUT_OK);
-                Flag.is_getting_last_cut(true);
                 BKanban.EthernetRespType = RESP_GET_LAST_CUT;
                 BKanban.BInterface.Json_UpdateLastCut(JsonDoc);
 

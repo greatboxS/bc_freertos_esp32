@@ -63,6 +63,8 @@ void root_sys_init()
     ethernet_apply_par_changed();
 
     root_nextion_init();
+    
+    RootNextion.Waiting(30000, "Initializing...");
 
     root_ethernet_init();
 
