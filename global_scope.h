@@ -4,19 +4,7 @@
 #define log_ln(...) printf("DEBUG: %s, line: %d\r\n%s\r\n", __func__, __LINE__, __VA_ARGS__)
 #define f_log() printf("Func: %s, line: %d\r\n", __func__, __LINE__)
 
-#define EEPROM_SERVER_PAR_ADDR 0
-#define EPPROM_USER_INFO_ADDR 100
-#define EEPROM_DEVICE_INFO_ADDR 200
-#define EEPROM_CUT_ADDR 300
-#define EEPROM_MAC_ADDR 310
 
-#define NEXTION_SERIAL_NUM 2
-#define NEXTION_BAUD 9600
-#define NEXTION_TIMEOUT 100
-
-#define MAX_QUEUE_LENGHT 10
-
-#define configSUPPORT_STATIC_ALLOCATION 1
 
 #include "esp_io_config.h"
 #include "root_app_data.h"
@@ -32,6 +20,18 @@
 #include "freertos/task.h"
 #include "esp_int_wdt.h"
 #include "esp_task_wdt.h"
+
+#define EEPROM_SERVER_PAR_ADDR 0
+#define EPPROM_USER_INFO_ADDR 100
+#define EEPROM_DEVICE_INFO_ADDR 200
+#define EEPROM_CUT_ADDR 300
+#define EEPROM_MAC_ADDR 310
+
+#define NEXTION_SERIAL_NUM 2
+#define NEXTION_BAUD 115200
+#define NEXTION_TIMEOUT 100
+
+#define MAX_QUEUE_LENGHT 10
 
 #ifndef SYS_TASK_LOG
 #define SYS_TASK_LOG false
