@@ -12,14 +12,14 @@
 #define SETTING_PIN GPIO_NUM_15
 #define ALARM_PIN GPIO_NUM_13
 
-static void external_interrupt_init(void(callback_func)())
+void external_interrupt_init(void(callback_func)())
 {
     printf("Setup external interrupt callback: OK\r\n");
     pinMode(EXTERNAL_INTERRUPT_PIN, INPUT);
     attachInterrupt(EXTERNAL_INTERRUPT_PIN, callback_func, FALLING);
 }
 
-static void io_init()
+void io_init()
 {
      printf("Setup serial port: OK\r\n");
     Serial.begin(115200);
@@ -45,7 +45,7 @@ static void io_init()
     digitalWrite(ETHERNET_RST_PIN, HIGH);
 }
 
-static void Output_Alarm(uint8_t count = 1)
+void Output_Alarm(uint8_t count = 1)
 {
     for (size_t i = 0; i < count; i++)
     {

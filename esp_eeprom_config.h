@@ -4,7 +4,7 @@
 
 //----------------------------------------------------------------------------------------
 template <typename T>
-static void eeprom_write(T val, int addr)
+void eeprom_write(T val, int addr)
 {
     uint8_t size = sizeof(T);
     printf("Write %d bytes have value %d to address %d\r\n", size, val, addr);
@@ -19,7 +19,7 @@ static void eeprom_write(T val, int addr)
 }
 
 template <typename T>
-static T eeprom_read(int addr)
+T eeprom_read(int addr)
 {
     T result = 0;
     uint8_t size = sizeof(T);
@@ -36,20 +36,20 @@ static T eeprom_read(int addr)
 }
 //----------------------------------------------------------------------------------------
 
-static void eeprom_begin()
+void eeprom_begin()
 {
     EEPROM.begin(1024);
     touch_pad_intr_disable();
 }
 
-static void eeprom_end()
+void eeprom_end()
 {
     EEPROM.end();
     //touch_pad_intr_enable();
 }
 //----------------------------------------------------------------------------------------
 
-static void eeprom_read_user_info(User_t &user, int address)
+void eeprom_read_user_info(User_t &user, int address)
 {
     printf("Eeprom read user info\r\n");
     int id_addr = address;
@@ -82,7 +82,7 @@ static void eeprom_read_user_info(User_t &user, int address)
     eeprom_end();
 }
 
-static void eeprom_write_user_info(User_t &user, int address)
+void eeprom_write_user_info(User_t &user, int address)
 {
     printf("Eeprom write user info\r\n");
     int id_addr = address;
@@ -112,7 +112,7 @@ static void eeprom_write_user_info(User_t &user, int address)
 }
 //----------------------------------------------------------------------------------------
 
-static void eeprom_read_mac(uint8_t *mac, size_t len, int address)
+void eeprom_read_mac(uint8_t *mac, size_t len, int address)
 {
     eeprom_begin();
     for (size_t i = address; i < address + len; i++)
@@ -123,7 +123,7 @@ static void eeprom_read_mac(uint8_t *mac, size_t len, int address)
     eeprom_end();
 }
 
-static void eeprom_write_mac(uint8_t *mac, size_t len, int address)
+void eeprom_write_mac(uint8_t *mac, size_t len, int address)
 {
     eeprom_begin();
     for (size_t i = address; i < address + len; i++)
@@ -134,7 +134,7 @@ static void eeprom_write_mac(uint8_t *mac, size_t len, int address)
     eeprom_end();
 }
 
-static void eeprom_read_server_ip(char *serverIp, size_t len, int address)
+void eeprom_read_server_ip(char *serverIp, size_t len, int address)
 {
     eeprom_begin();
     for (size_t i = address; i < address + len; i++)
@@ -145,7 +145,7 @@ static void eeprom_read_server_ip(char *serverIp, size_t len, int address)
     eeprom_end();
 }
 
-static void eeprom_write_server_ip(char *serverIp, size_t len, int address)
+void eeprom_write_server_ip(char *serverIp, size_t len, int address)
 {
     eeprom_begin();
     for (size_t i = address; i < address + len; i++)
@@ -156,14 +156,14 @@ static void eeprom_write_server_ip(char *serverIp, size_t len, int address)
     eeprom_end();
 }
 
-static void eeprom_write_port(int port, int address)
+void eeprom_write_port(int port, int address)
 {
     eeprom_begin();
     eeprom_write<int>(port, address);
     eeprom_end();
 }
 
-static int eeprom_read_port(int address)
+int eeprom_read_port(int address)
 {
     eeprom_begin();
     int port = eeprom_read<int>(address);
@@ -171,7 +171,7 @@ static int eeprom_read_port(int address)
     return port;
 }
 
-static void eeprom_write_server_par(char *serverIp, uint8_t len, int &port, int address)
+void eeprom_write_server_par(char *serverIp, uint8_t len, int &port, int address)
 {
     printf("Eeprom write server pars\r\n");
     int port_addr = address;
@@ -180,7 +180,7 @@ static void eeprom_write_server_par(char *serverIp, uint8_t len, int &port, int 
     eeprom_write_server_ip(serverIp, len, ip_addr);
 }
 
-static void eeprom_read_server_par(char *serverIp, uint8_t len, int &port, int address)
+void eeprom_read_server_par(char *serverIp, uint8_t len, int &port, int address)
 {
     printf("Eeprom read server pars\r\n");
     int port_addr = address;
@@ -191,7 +191,7 @@ static void eeprom_read_server_par(char *serverIp, uint8_t len, int &port, int a
 
 //----------------------------------------------------------------------------------------
 
-static void eeprom_write_machine_info(int machineId, char *sysCode, char *machine_name, uint8_t len, int address)
+void eeprom_write_machine_info(int machineId, char *sysCode, char *machine_name, uint8_t len, int address)
 {
     printf("Eeprom save machine info\r\n");
     eeprom_begin();
@@ -240,12 +240,12 @@ void eeprom_read_machine_info(int &machineId, char *sysCode, char *machine_name,
     eeprom_end();
 }
 
-static void eeprom_read_machine_info(Machine_t &machine, int address)
+void eeprom_read_machine_info(Machine_t &machine, int address)
 {
     eeprom_read_machine_info(machine.id, machine.MachineCode, machine.MachineName, sizeof(machine.MachineName), address);
 }
 
-static void eeprom_write_machine_info(Machine_t &machine, int address)
+void eeprom_write_machine_info(Machine_t &machine, int address)
 {
     eeprom_write_machine_info(machine.id, machine.MachineCode, machine.MachineName, sizeof(machine.MachineName), address);
 }

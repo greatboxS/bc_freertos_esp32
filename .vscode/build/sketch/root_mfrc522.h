@@ -5,10 +5,10 @@
 #include "MFRC522.h"
 #include "SPI.h"
 
-static MFRC522 mfrc = MFRC522(MFRC522_SS_PIN, MFRC522_RST_PIN);
+MFRC522 mfrc = MFRC522(MFRC522_SS_PIN, MFRC522_RST_PIN);
 uint8_t TagNumber[16];
 
-static void mfrc522_init()
+void mfrc522_init()
 {
 	printf("Initialize MFRC522\r\n");
     SPI.begin();
@@ -18,7 +18,7 @@ static void mfrc522_init()
 	printf("Scan PICC to see UID, SAK, type, and data blocks...\r\n");
 }
 
-static String read_tagNumber()
+String read_tagNumber()
 {
 	String uid = "";
 
@@ -32,7 +32,7 @@ static String read_tagNumber()
 	return uid;
 }
 
-static bool mfrc522_read_new_tag()
+bool mfrc522_read_new_tag()
 {
     if (mfrc.PICC_IsNewCardPresent())
 	{

@@ -33,14 +33,14 @@ IPAddress local_ip, gateway_ip, dns_ip, subnet_ip;
 
 EthernetClient client;
 
-static void ethernet_init(uint8_t cs_pin, uint8_t rst_pin, void (*callback_func)(EthernetClient &stream))
+void ethernet_init(uint8_t cs_pin, uint8_t rst_pin, void (*callback_func)(EthernetClient &stream))
 {
     RST_PIN = rst_pin;
     SS_PIN = cs_pin;
     received_data_Callback = callback_func;
 }
 
-static uint8_t ethernet_get_module_status()
+uint8_t ethernet_get_module_status()
 {
     if (Ethernet.hardwareStatus() == EthernetNoHardware)
     {
@@ -57,7 +57,7 @@ static uint8_t ethernet_get_module_status()
     return 1;
 }
 
-static void ethernet_listen()
+void ethernet_listen()
 {
     if (client.available() > 0)
     {
@@ -68,13 +68,13 @@ static void ethernet_listen()
     }
 }
 
-static void ethernet_set_mac(uint8_t *mac)
+void ethernet_set_mac(uint8_t *mac)
 {
     printf("Ethernet setup device mac\r\n");
     memccpy(DeviceMac, mac, 0, sizeof(DeviceMac));
 }
 
-static void ethernet_reset()
+void ethernet_reset()
 {
     printf("Ethernet module is resetting...");
     digitalWrite(RST_PIN, LOW);
@@ -83,7 +83,7 @@ static void ethernet_reset()
     delay(3000);
 }
 
-static void ethernet_apply_par_changed()
+void ethernet_apply_par_changed()
 {
     printf("ApplyServer");
     snprintf(Host, sizeof(Host), "Host: %s:%d", ServerIp, ServerPort);
@@ -91,28 +91,28 @@ static void ethernet_apply_par_changed()
 
 }
 
-static void ethernet_set_server_port(uint16_t _port)
+void ethernet_set_server_port(uint16_t _port)
 {
     printf("Set Port\r\n");
     ServerPort = _port;
     ethernet_apply_par_changed();
 }
 
-static void ethernet_set_server_ip(const String &serverName)
+void ethernet_set_server_ip(const String &serverName)
 {
     printf("Set server\r\n");
     memccpy(ServerIp, serverName.c_str(), 0, sizeof(ServerIp));
     ethernet_apply_par_changed();
 }
 
-static void ethernet_set_server_ip(char *serverName)
+void ethernet_set_server_ip(char *serverName)
 {
     printf("Set server\r\n");
     memccpy(ServerIp, serverName, 0, sizeof(ServerIp));
     ethernet_apply_par_changed();
 }
 
-static void ethernet_setup_server_par(const String &serverName, uint16_t _port)
+void ethernet_setup_server_par(const String &serverName, uint16_t _port)
 {
     printf("Ethernet setup server parameters\r\n");
     ServerPort = _port;
@@ -121,7 +121,7 @@ static void ethernet_setup_server_par(const String &serverName, uint16_t _port)
     printf("Setup done!\r\n");
 }
 
-static void ethernet_setup_server_par(char *serverName, uint16_t _port)
+void ethernet_setup_server_par(char *serverName, uint16_t _port)
 {
     printf("Ethernet setup server parameters\r\n");
     ServerPort = _port;
@@ -130,7 +130,7 @@ static void ethernet_setup_server_par(char *serverName, uint16_t _port)
     printf("Setup done!\r\n");
 }
 
-static void ethernet_url_builder(char *url, uint8_t method)
+void ethernet_url_builder(char *url, uint8_t method)
 {
     memset(RootUrl, 0, sizeof(RootUrl));
     switch (method)
@@ -150,7 +150,7 @@ static void ethernet_url_builder(char *url, uint8_t method)
     }
 }
 
-static void ethernet_url_builder(const String &url, uint8_t method)
+void ethernet_url_builder(const String &url, uint8_t method)
 {
     memset(RootUrl, 0, sizeof(RootUrl));
     switch (method)
@@ -170,7 +170,7 @@ static void ethernet_url_builder(const String &url, uint8_t method)
     }
 }
 
-static void ethernet_make_request(char *url, uint8_t method, char *data = nullptr)
+void ethernet_make_request(char *url, uint8_t method, char *data = nullptr)
 {
     printf("Ethernet make request\r\n");
     char temp[32]{0};
@@ -202,7 +202,7 @@ static void ethernet_make_request(char *url, uint8_t method, char *data = nullpt
         client.println();
 }
 
-static uint8_t ethernet_begin()
+uint8_t ethernet_begin()
 {
     printf("Begin config ethernet module\r\n");
     Ethernet.init(SS_PIN);
@@ -239,9 +239,9 @@ static uint8_t ethernet_begin()
     return exception;
 }
 
-static void ethernet_re_init()
+void ethernet_re_init()
 {
-    printf("ReInitialize Ethernet module with static ip\r\n");
+    printf("ReInitialize Ethernet module with ip\r\n");
     Ethernet.init(SS_PIN);
     Ethernet.begin(DeviceMac, local_ip, dns_ip, gateway_ip, subnet_ip);
 }
