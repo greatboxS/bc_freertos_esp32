@@ -117,6 +117,8 @@ void ethernet_handle(EthernetClient &client)
 
             BKanban.EthernetRespType = RESP_ERROR;
 
+            printf("End of package %s\r\n", eop.c_str());
+
             if (Error)
             {
                 Flag.RespError = true;
@@ -257,6 +259,9 @@ void ethernet_handle(EthernetClient &client)
             if (eop == "BEAM_GET_LAST_CUT")
             {
                 xEventGroupSetBits(EventGroupHandle, EVENT_GET_LAST_CUT_OK);
+
+                printf("set last cut event bit\r\n");
+
                 BKanban.EthernetRespType = RESP_GET_LAST_CUT;
                 BKanban.BInterface.Json_UpdateLastCut(JsonDoc);
 

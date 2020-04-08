@@ -1,0 +1,3925 @@
+Failed to configure Ethernet using DHCPBegin config ethernet module
+
+Save ethernet ip
+
+Local Ip: 10.4.1.168, Gateway Ip: 10.4.1.254, DNS: 10.4.0.28, Subnet: 255.255.255.0
+
+Create QueueHandle success
+
+Create SemaphoreHandle success
+
+Create EventGroupHandle success
+
+start Timer1 successfully
+
+Start Timer2 successfully
+
+Start Timer3 successfully
+
+Task_Main created successully
+
+Task_get_last_cut created successully
+
+Get last cut
+
+Func: Ethernet_GetLastCut, line: 262
+
+Task_ethernet_send_request created successully
+
+Task_ethernet_checking_data created successully
+
+Task_nextion_screen created successully
+
+--->> Task3 have done
+
+--->> Task2 have done
+
+Func: SendRequest, line: 336
+
+Task_card_detect created successully
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+--->> Task1 have done
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+--->> Task4 have done
+
+--->> Task5 have done
+
+Queue receive
+
+Resum Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/0
+
+Resum Task3
+
+ReInitialize Ethernet module with ip
+
+Resum Task4
+
+--->> Task3 have done
+
+Resum Task5
+
+HIS_P.p0.pic=10
+
+Resume Task1
+
+LOGIN_P.ETHERNET.val=1
+
+Resum Task4
+
+--->> Task1 have done
+
+RootEthernet.client.connected() = 1
+
+WAITING_P.r3.val=0
+
+Resum Task2
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+WAITING_P.r4.val=0
+
+GET /api-get_lastcutting/4/0 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+WAITING_P.r5.val=0
+
+--->> Task5 have done
+
+Resume Task1
+
+WAITING_P.r0.val=0
+
+Set event bit and reset timeout timer
+
+WAITING_P.r1.val=0
+
+--->> Task1 have done
+
+Resum Task2
+
+WAITING_P.r2.val=1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 125800
+
+--->> Task4 have done
+
+Resum Task5
+
+Json error: Ok
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+CUTTING_P.START_SEQ.val=1
+
+CUTTING_P.STOP_SEQ.val=12
+
+Func: ButContinueClickCallback, line: 59
+
+Func: Ethernet_GetComponent, line: 240
+
+Func: SendRequest, line: 336
+
+Func: Ethernet_GetScheduleInfo, line: 272
+
+Func: SendRequest, line: 336
+
+QGueue receive
+
+page HIS_P
+
+Func: Ethernet_SubmitCuttingTime, line: 303
+
+Func: SendRequest, line: 336
+
+Func: Ethernet_GetTime, line: 120
+
+Func: SendRequest, line: 336
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_component/108941/6531
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-get_component/108941/6531 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Goto page:8
+page WAITING_P
+
+WAITING_P.tm0.tim=5000
+
+WAITING_P.t0.txt="Request to server..."
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Queue receive
+
+Json error: Ok
+
+Func: Json_UpdateComponentList, line: 532
+
+Func: Ethernet_GetScheduleInfo, line: 71
+
+Func: SendRequest, line: 336
+
+Goto page:5
+page COMPONENT_P
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_scheduleInfo/108941/6531/558
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-get_scheduleInfo/108941/6531/558 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Goto page:8
+page WAITING_P
+
+WAITING_P.tm0.tim=5000
+
+WAITING_P.t0.txt="Request to server..."
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Queue receive
+
+Json error: Ok
+
+Func: Json_UpdateScheduleInfo, line: 486
+
+Func: SendRequest, line: 336
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-bmachine_cuttime/4/0
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-bmachine_cuttime/4/0 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Json error: Ok
+
+Func: Json_UpdateSubmitCutTime, line: 661
+
+CUTTING_P.TOTAL_TIME.val=0
+
+--->> Task3 have done
+
+Queue receive
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-gettime
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-gettime HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Json error: Ok
+
+Func: Json_UpdateTime, line: 650
+
+WAITING_P.r3.val=24
+
+WAITING_P.r4.val=3
+
+WAITING_P.r5.val=20
+
+Queue receive
+
+WAITING_P.r0.val=7
+
+WAITING_P.r1.val=43
+
+WAITING_P.r2.val=4
+
+Func: Ethernet_GetLastCut, line: 262
+
+Func: SendRequest, line: 336
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 0, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_scheduleInfo/108941/6531/558
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-get_scheduleInfo/108941/6531/558 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Goto page:8
+page WAITING_P
+
+WAITING_P.tm0.tim=5000
+
+WAITING_P.t0.txt="Request to server..."
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Queue receive
+
+Json error: Ok
+
+Func: Json_UpdateScheduleInfo, line: 486
+
+Func: SendRequest, line: 336
+
+--->> Task3 have done
+
+Resum Task4
+
+HIS_P.p0.pic=10
+
+LOGIN_P.ETHERNET.val=1
+
+WAITING_P.r3.val=24
+
+WAITING_P.r4.val=3
+
+WAITING_P.r5.val=20
+
+WAITING_P.r0.val=7
+
+WAITING_P.r1.val=43
+
+WAITING_P.r2.val=5
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 124176
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_size/920/931
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-get_size/920/931 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Goto page:8
+page WAITING_P
+
+WAITING_P.tm0.tim=5000
+
+WAITING_P.t0.txt="Request to server..."
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Queue receive
+
+Json error: Ok
+
+Func: Json_UpdateSizeList, line: 514
+
+Func: SendRequest, line: 336
+
+Goto page:3
+page CUTTING_P
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/1244
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-get_lastcutting/4/1244 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Json error: Ok
+
+CUTTING_P.START_SEQ.val=1
+
+Queue receive
+
+CUTTING_P.STOP_SEQ.val=12
+
+Goto page:0
+page HIS_P
+
+Func: Ethernet_SubmitCuttingTime, line: 303
+
+Func: SendRequest, line: 336
+
+Func: Ethernet_GetTime, line: 120
+
+Func: SendRequest, line: 336
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_size/920/931
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-get_size/920/931 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Goto page:8
+page WAITING_P
+
+WAITING_P.tm0.tim=5000
+
+WAITING_P.t0.txt="Request to server..."
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 5, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Queue receive
+
+Json error: Ok
+
+Func: Json_UpdateSizeList, line: 514
+
+Func: SendRequest, line: 336
+
+Goto page:3
+page CUTTING_P
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-start_cutting/4/12/117/920/931/0
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-start_cutting/4/12/117/920/931/0 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Goto page:8
+page WAITING_P
+
+WAITING_P.tm0.tim=5000
+
+WAITING_P.t0.txt="Request to server..."
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Json error: Ok
+
+MESSAGE_P.t0.txt="Start success"
+
+Goto page:7
+page MESSAGE_P
+
+MESSAGE_P.tm0.tim=1000
+
+Func: Json_UpdateStartCutting, line: 622
+
+Queue receive
+
+Eeprom begin code::1
+
+Write 4 bytes have value 1245 to address 300
+
+Byte index 4, val 0
+
+Byte index 3, val 0
+
+Byte index 2, val 4
+
+Byte index 1, val 221
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-bmachine_cuttime/4/0
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-bmachine_cuttime/4/0 HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Json error: Ok
+
+Func: Json_UpdateSubmitCutTime, line: 661
+
+CUTTING_P.TOTAL_TIME.val=0
+
+--->> Task3 have done
+
+Queue receive
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-gettime
+
+ReInitialize Ethernet module with ip
+
+RootEthernet.client.connected() = 1
+
+RootEthernet.client.status() = 23
+
+RootEthernet.client.getTimeout() = 1000
+
+Ethernet make request
+
+GET /api-gettime HTTP/1.1
+
+Host: 10.4.2.23:32764
+
+Connection: close
+
+Set event bit and reset timeout timer
+
+--->> Task2 have done
+
+Resum Task3
+
+Http header: HTTP/1.1 200 OK
+
+
+Json error: Ok
+
+Func: Json_UpdateTime, line: 650
+
+WAITING_P.r3.val=24
+
+WAITING_P.r4.val=3
+
+WAITING_P.r5.val=20
+
+Queue receive
+
+WAITING_P.r0.val=7
+
+WAITING_P.r1.val=43
+
+WAITING_P.r2.val=5
+
+CUTTING_P.TIME.txt="0:1"
+
+Goto page:3
+page CUTTING_P
+
+Func: Ethernet_GetLastCut, line: 262
+
+Func: SendRequest, line: 336
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+Ethernet cable is not connected
+
+HIS_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+WAITING_P.r3.val=24
+
+WAITING_P.r4.val=3
+
+WAITING_P.r5.val=20
+
+WAITING_P.r0.val=7
+
+WAITING_P.r1.val=43
+
+WAITING_P.r2.val=5
+
+CUTTING_P.TIME.txt="0:1"
+
+Goto page:3
+page CUTTING_P
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-start_cutting/4/12/117/920/931/1244
+
+ReInitialize Ethernet module with ip
+
+1
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 0, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 8, Component Id: 200, Event Type: 0
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+HIS_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+WAITING_P.r3.val=24
+
+WAITING_P.r4.val=3
+
+WAITING_P.r5.val=20
+
+WAITING_P.r0.val=7
+
+WAITING_P.r1.val=43
+
+WAITING_P.r2.val=7
+
+CUTTING_P.TIME.txt="0:3"
+
+Goto page:3
+page CUTTING_P
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+Send new request
+
+----------------------->> api-start_cutting/4/12/117/920/931/1244
+
+ReInitialize Ethernet module with ip
+
+1
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 7, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+2
+
+3
+
+4
+
+5
+
+6
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+7
+
+8
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+HIS_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=9
+
+CUTTING_P.TIME.txt="0:5"
+
+Goto page:3
+page CUTTING_P
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+Func: Nextion_UpdateCuttingPage, line: 396
+
+CUTTING_P.PO_NUMBER.txt="0124859061-2"
+
+CUTTING_P.TOTAL_SEQ.txt="12"
+
+CUTTING_P.SEQ_QTY.val=1920
+
+CUTTING_P.COMPONENT.txt="TC MIENG TT LG"
+
+CUTTING_P.USER_NAME.txt="NGUYEN TUYET LINH"
+
+CUTTING_P.CUTTING_TIME.val=0
+
+CUTTING_P.TOTAL_TIME.val=0
+
+-------------------------------------Clear flag ok
+
+CUTTING_P.CUTTING_QTY.val=0
+
+CUTTING_P.TIME.txt="0:6"
+
+CUTTING_P.sq13.txt="140"
+
+CUTTING_P.t13.txt="0"
+
+CUTTING_P.t13.pco=1152
+
+CUTTING_P.sq15.txt="250"
+
+CUTTING_P.t15.txt="250"
+
+CUTTING_P.t15.pco=63488
+
+CUTTING_P.sq16.txt="100"
+
+CUTTING_P.t16.txt="100"
+
+CUTTING_P.t16.pco=63488
+
+CUTTING_P.sq17.txt="300"
+
+CUTTING_P.t17.txt="300"
+
+CUTTING_P.t17.pco=63488
+
+CUTTING_P.sq18.txt="110"
+
+CUTTING_P.t18.txt="110"
+
+CUTTING_P.t18.pco=63488
+
+CUTTING_P.sq19.txt="360"
+
+CUTTING_P.t19.txt="0"
+
+CUTTING_P.t19.pco=1152
+
+CUTTING_P.sq20.txt="110"
+
+CUTTING_P.t20.txt="0"
+
+CUTTING_P.t20.pco=1152
+
+CUTTING_P.sq21.txt="230"
+
+CUTTING_P.t21.txt="0"
+
+CUTTING_P.t21.pco=1152
+
+CUTTING_P.sq22.txt="100"
+
+CUTTING_P.t22.txt="0"
+
+CUTTING_P.t22.pco=1152
+
+CUTTING_P.sq23.txt="140"
+
+CUTTING_P.t23.txt="0"
+
+CUTTING_P.t23.pco=1152
+
+CUTTING_P.sq25.txt="50"
+
+CUTTING_P.t25.txt="0"
+
+CUTTING_P.t25.pco=1152
+
+CUTTING_P.sq14.txt="10"
+
+CUTTING_P.t14.txt="0"
+
+CUTTING_P.t14.pco=1152
+
+CUTTING_P.sq24.txt="10"
+
+CUTTING_P.t24.txt="0"
+
+CUTTING_P.t24.pco=1152
+
+CUTTING_P.sq27.txt="10"
+
+CUTTING_P.t27.txt="0"
+
+CUTTING_P.t27.pco=1152
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 2
+
+Send new request
+
+----------------------->> api-start_cutting/4/12/117/920/931/1244
+
+ReInitialize Ethernet module with ip
+
+1
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=13
+
+CUTTING_P.TIME.txt="0:9"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+Func: Nextion_UpdateCuttingPage, line: 396
+
+CUTTING_P.PO_NUMBER.txt="0124859061-2"
+
+CUTTING_P.TOTAL_SEQ.txt="12"
+
+CUTTING_P.SEQ_QTY.val=1920
+
+CUTTING_P.COMPONENT.txt="TC MIENG TT LG"
+
+CUTTING_P.USER_NAME.txt="NGUYEN TUYET LINH"
+
+CUTTING_P.CUTTING_TIME.val=0
+
+CUTTING_P.TOTAL_TIME.val=0
+
+CUTTING_P.CUTTING_QTY.val=0
+
+CUTTING_P.TIME.txt="0:9"
+
+CUTTING_P.sq13.txt="140"
+
+CUTTING_P.t13.txt="0"
+
+CUTTING_P.t13.pco=1152
+
+CUTTING_P.sq15.txt="250"
+
+CUTTING_P.t15.txt="250"
+
+CUTTING_P.t15.pco=63488
+
+CUTTING_P.sq16.txt="100"
+
+CUTTING_P.t16.txt="100"
+
+CUTTING_P.t16.pco=63488
+
+CUTTING_P.sq17.txt="300"
+
+CUTTING_P.t17.txt="300"
+
+CUTTING_P.t17.pco=63488
+
+CUTTING_P.sq18.txt="110"
+
+CUTTING_P.t18.txt="110"
+
+CUTTING_P.t18.pco=63488
+
+CUTTING_P.sq19.txt="360"
+
+CUTTING_P.t19.txt="0"
+
+CUTTING_P.t19.pco=1152
+
+CUTTING_P.sq20.txt="110"
+
+CUTTING_P.t20.txt="0"
+
+CUTTING_P.t20.pco=1152
+
+CUTTING_P.sq21.txt="230"
+
+CUTTING_P.t21.txt="0"
+
+CUTTING_P.t21.pco=1152
+
+CUTTING_P.sq22.txt="100"
+
+CUTTING_P.t22.txt="0"
+
+CUTTING_P.t22.pco=1152
+
+CUTTING_P.sq23.txt="140"
+
+CUTTING_P.t23.txt="0"
+
+CUTTING_P.t23.pco=1152
+
+CUTTING_P.sq25.txt="50"
+
+CUTTING_P.t25.txt="0"
+
+CUTTING_P.t25.pco=1152
+
+CUTTING_P.sq14.txt="10"
+
+CUTTING_P.t14.txt="0"
+
+CUTTING_P.t14.pco=1152
+
+CUTTING_P.sq24.txt="10"
+
+CUTTING_P.t24.txt="0"
+
+CUTTING_P.t24.pco=1152
+
+CUTTING_P.sq27.txt="10"
+
+CUTTING_P.t27.txt="0"
+
+CUTTING_P.t27.pco=1152
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 3
+
+Send new request
+
+----------------------->> api-start_cutting/4/12/117/920/931/1244
+
+ReInitialize Ethernet module with ip
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=16
+
+CUTTING_P.TIME.txt="0:12"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 4
+
+Send new request
+
+----------------------->> api-start_cutting/4/12/117/920/931/1244
+
+ReInitialize Ethernet module with ip
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+MESSAGE_P.t0.txt="Can not connect to server"
+
+Goto page:7
+page MESSAGE_P
+
+MESSAGE_P.tm0.tim=1000
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=19
+
+CUTTING_P.TIME.txt="0:15"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Queue receive
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 7, Component Id: 200, Event Type: 0
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+MESSAGE_P.r3.val=24
+
+MESSAGE_P.r4.val=3
+
+MESSAGE_P.r5.val=20
+
+MESSAGE_P.r0.val=7
+
+MESSAGE_P.r1.val=43
+
+MESSAGE_P.r2.val=19
+
+CUTTING_P.TIME.txt="0:15"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 0
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/1245
+
+ReInitialize Ethernet module with ip
+
+1
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 7, Component Id: 100, Event Type: 0
+
+Func: WaitingTimeOutCallback, line: 308
+
+Goto page:3
+page CUTTING_P
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=21
+
+CUTTING_P.TIME.txt="0:17"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+Func: Nextion_UpdateCuttingPage, line: 396
+
+CUTTING_P.PO_NUMBER.txt="0124859061-2"
+
+CUTTING_P.TOTAL_SEQ.txt="12"
+
+CUTTING_P.SEQ_QTY.val=1920
+
+CUTTING_P.COMPONENT.txt="TC MIENG TT LG"
+
+CUTTING_P.USER_NAME.txt="NGUYEN TUYET LINH"
+
+CUTTING_P.CUTTING_TIME.val=0
+
+CUTTING_P.TOTAL_TIME.val=0
+
+CUTTING_P.CUTTING_QTY.val=0
+
+CUTTING_P.TIME.txt="0:17"
+
+CUTTING_P.sq13.txt="140"
+
+CUTTING_P.t13.txt="0"
+
+CUTTING_P.t13.pco=1152
+
+CUTTING_P.sq15.txt="250"
+
+CUTTING_P.t15.txt="250"
+
+CUTTING_P.t15.pco=63488
+
+CUTTING_P.sq16.txt="100"
+
+CUTTING_P.t16.txt="100"
+
+CUTTING_P.t16.pco=63488
+
+CUTTING_P.sq17.txt="300"
+
+CUTTING_P.t17.txt="300"
+
+CUTTING_P.t17.pco=63488
+
+CUTTING_P.sq18.txt="110"
+
+CUTTING_P.t18.txt="110"
+
+CUTTING_P.t18.pco=63488
+
+CUTTING_P.sq19.txt="360"
+
+CUTTING_P.t19.txt="0"
+
+CUTTING_P.t19.pco=1152
+
+CUTTING_P.sq20.txt="110"
+
+CUTTING_P.t20.txt="0"
+
+CUTTING_P.t20.pco=1152
+
+CUTTING_P.sq21.txt="230"
+
+CUTTING_P.t21.txt="0"
+
+CUTTING_P.t21.pco=1152
+
+CUTTING_P.sq22.txt="100"
+
+CUTTING_P.t22.txt="0"
+
+CUTTING_P.t22.pco=1152
+
+CUTTING_P.sq23.txt="140"
+
+CUTTING_P.t23.txt="0"
+
+CUTTING_P.t23.pco=1152
+
+CUTTING_P.sq25.txt="50"
+
+CUTTING_P.t25.txt="0"
+
+CUTTING_P.t25.pco=1152
+
+CUTTING_P.sq14.txt="10"
+
+CUTTING_P.t14.txt="0"
+
+CUTTING_P.t14.pco=1152
+
+CUTTING_P.sq24.txt="10"
+
+CUTTING_P.t24.txt="0"
+
+CUTTING_P.t24.pco=1152
+
+CUTTING_P.sq27.txt="10"
+
+CUTTING_P.t27.txt="0"
+
+CUTTING_P.t27.pco=1152
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 1
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/1245
+
+ReInitialize Ethernet module with ip
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=25
+
+CUTTING_P.TIME.txt="0:21"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 2
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/1245
+
+ReInitialize Ethernet module with ip
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=27
+
+CUTTING_P.TIME.txt="0:23"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 3
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/1245
+
+ReInitialize Ethernet module with ip
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=29
+
+CUTTING_P.TIME.txt="0:25"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 4
+
+Send new request
+
+----------------------->> api-get_lastcutting/4/1245
+
+ReInitialize Ethernet module with ip
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+MESSAGE_P.t0.txt="Can not connect to server"
+
+Goto page:7
+page MESSAGE_P
+
+MESSAGE_P.tm0.tim=1000
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=31
+
+CUTTING_P.TIME.txt="0:27"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 7, Component Id: 200, Event Type: 0
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+MESSAGE_P.r3.val=24
+
+MESSAGE_P.r4.val=3
+
+MESSAGE_P.r5.val=20
+
+MESSAGE_P.r0.val=7
+
+MESSAGE_P.r1.val=43
+
+MESSAGE_P.r2.val=32
+
+CUTTING_P.TIME.txt="0:28"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+MESSAGE_P.r3.val=24
+
+MESSAGE_P.r4.val=3
+
+MESSAGE_P.r5.val=20
+
+MESSAGE_P.r0.val=7
+
+MESSAGE_P.r1.val=43
+
+MESSAGE_P.r2.val=33
+
+CUTTING_P.TIME.txt="0:29"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 7, Component Id: 100, Event Type: 0
+
+Func: WaitingTimeOutCallback, line: 308
+
+Goto page:3
+page CUTTING_P
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Func: PAGE_LOADING_EVENT_CALLBACK, line: 296
+
+Page Id: 3, Component Id: 200, Event Type: 0
+
+Func: Nextion_UpdateCuttingPage, line: 396
+
+CUTTING_P.PO_NUMBER.txt="0124859061-2"
+
+CUTTING_P.TOTAL_SEQ.txt="12"
+
+CUTTING_P.SEQ_QTY.val=1920
+
+CUTTING_P.COMPONENT.txt="TC MIENG TT LG"
+
+CUTTING_P.USER_NAME.txt="NGUYEN TUYET LINH"
+
+CUTTING_P.CUTTING_TIME.val=0
+
+CUTTING_P.TOTAL_TIME.val=0
+
+CUTTING_P.CUTTING_QTY.val=0
+
+CUTTING_P.TIME.txt="0:30"
+
+CUTTING_P.sq13.txt="140"
+
+CUTTING_P.t13.txt="0"
+
+CUTTING_P.t13.pco=1152
+
+CUTTING_P.sq15.txt="250"
+
+CUTTING_P.t15.txt="250"
+
+CUTTING_P.t15.pco=63488
+
+CUTTING_P.sq16.txt="100"
+
+CUTTING_P.t16.txt="100"
+
+CUTTING_P.t16.pco=63488
+
+CUTTING_P.sq17.txt="300"
+
+CUTTING_P.t17.txt="300"
+
+CUTTING_P.t17.pco=63488
+
+CUTTING_P.sq18.txt="110"
+
+CUTTING_P.t18.txt="110"
+
+CUTTING_P.t18.pco=63488
+
+CUTTING_P.sq19.txt="360"
+
+CUTTING_P.t19.txt="0"
+
+CUTTING_P.t19.pco=1152
+
+CUTTING_P.sq20.txt="110"
+
+CUTTING_P.t20.txt="0"
+
+CUTTING_P.t20.pco=1152
+
+CUTTING_P.sq21.txt="230"
+
+CUTTING_P.t21.txt="0"
+
+CUTTING_P.t21.pco=1152
+
+CUTTING_P.sq22.txt="100"
+
+CUTTING_P.t22.txt="0"
+
+CUTTING_P.t22.pco=1152
+
+CUTTING_P.sq23.txt="140"
+
+CUTTING_P.t23.txt="0"
+
+CUTTING_P.t23.pco=1152
+
+CUTTING_P.sq25.txt="50"
+
+CUTTING_P.t25.txt="0"
+
+CUTTING_P.t25.pco=1152
+
+CUTTING_P.sq14.txt="10"
+
+CUTTING_P.t14.txt="0"
+
+CUTTING_P.t14.pco=1152
+
+CUTTING_P.sq24.txt="10"
+
+CUTTING_P.t24.txt="0"
+
+CUTTING_P.t24.pco=1152
+
+CUTTING_P.sq27.txt="10"
+
+CUTTING_P.t27.txt="0"
+
+CUTTING_P.t27.pco=1152
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
+CUTTING_P.r1.val=43
+
+CUTTING_P.r2.val=35
+
+CUTTING_P.TIME.txt="0:31"
+
+HIS_P.DEVICE_NAME.txt="BC4"
+
+Free heap size: 123992
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+--->> Task4 have done
+
+Resum Task5
+
+--->> Task5 have done
+
+Resume Task2
+
+-------------------->> Request retry times: 5
+
+Block current request
+
+--->> Task2 have done
+
+Resum Task3
+
+--->> Task3 have done
+
+Resum Task4
+
+Ethernet cable is not connected
+
+CUTTING_P.p0.pic=11
+
+LOGIN_P.ETHERNET.val=0
+
+CUTTING_P.r3.val=24
+
+CUTTING_P.r4.val=3
+
+CUTTING_P.r5.val=20
+
+CUTTING_P.r0.val=7
+
